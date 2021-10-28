@@ -111,14 +111,26 @@ function game() {
     result = playRound(playerSelection, compValue);
     para2.textContent = `You selected ${playerSelection}, the computer selected ${compValue}.`;
     para.textContent = `${result}`;
-  } else {
-    i--;
-    alert("Not a valid input, please enter Rock, Paper or Scissors");
-    console.log("Not a valid input");
+    // } else {
+    //   i--;
+    //   alert("Not a valid input, please enter Rock, Paper or Scissors");
+    //   console.log("Not a valid input");
     // }
+    if (playerWin === 5 || computerWin === 5) {
+      if (playerWin > computerWin) {
+        para3.textContent = `You won!`;
+        resetCounters();
+      } else para3.textContent = `You lost... Loser`;
+      resetCounters();
+    } else
+      para3.textContent = `You won a total of ${playerWin} times, the computer won a total of 
+    ${computerWin} times.`;
   }
-  para3.textContent = `You won a total of ${playerWin} times, the computer won a total of 
-    ${computerWin} times. Wanna play again?`;
+}
+
+function resetCounters() {
+  playerWin = 0;
+  computerWin = 0;
 }
 
 const rockbtn = document.querySelector("#rock");
